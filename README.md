@@ -1,2 +1,2 @@
 # DiffusionReward
-Public code and model
+Code and model is conming sooning
