@@ -1,0 +1,149 @@
+model:
+  cldm:
+    target: diffbir.model.cldm.ControlLDM
+    params:
+      latent_scale_factor: 0.18215
+      unet_cfg:
+        use_checkpoint: True
+        image_size: 32 # unused
+        in_channels: 4
+        out_channels: 4
+        model_channels: 320
+        attention_resolutions: [ 4, 2, 1 ]
+        num_res_blocks: 2
+        channel_mult: [ 1, 2, 4, 4 ]
+        num_head_channels: 64 # need to fix for flash-attn
+        use_spatial_transformer: True
+        use_linear_in_transformer: True
+        transformer_depth: 1
+        context_dim: 1024
+        legacy: False
+      vae_cfg:
+        embed_dim: 4
+        ddconfig:
+          double_z: true
+          z_channels: 4
+          resolution: 256
+          in_channels: 3
+          out_ch: 3
+          ch: 128
+          ch_mult:
+          - 1
+          - 2
+          - 4
+          - 4
+          num_res_blocks: 2
+          attn_resolutions: []
+          dropout: 0.0
+      clip_cfg:
+        embed_dim: 1024
+        vision_cfg:
+          image_size: 224
+          layers: 32
+          width: 1280
+          head_width: 80
+          patch_size: 14
+        text_cfg:
+          context_length: 77
+          vocab_size: 49408
+          width: 1024
+          heads: 16
+          layers: 24
+        layer: "penultimate"
+      controlnet_cfg:
+        use_checkpoint: True
+        image_size: 32 # unused
+        in_channels: 4
+        hint_channels: 4
+        model_channels: 320
+        attention_resolutions: [ 4, 2, 1 ]
+        num_res_blocks: 2
+        channel_mult: [ 1, 2, 4, 4 ]
+        num_head_channels: 64 # need to fix for flash-attn
+        use_spatial_transformer: True
+        use_linear_in_transformer: True
+        transformer_depth: 1
+        context_dim: 1024
+        legacy: False
+
+  swinir:
+    target: diffbir.model.swinir.SwinIR
+    params:
+      img_size: 64
+      patch_size: 1
+      in_chans: 3
+      embed_dim: 180
+      depths: [6, 6, 6, 6, 6, 6, 6, 6]
+      num_heads: [6, 6, 6, 6, 6, 6, 6, 6]
+      window_size: 8
+      mlp_ratio: 2
+      sf: 8
+      img_range: 1.0
+      upsampler: "nearest+conv"
+      resi_connection: "1conv"
+      unshuffle: True
+      unshuffle_scale: 8
+
+  diffusion:
+    target: diffbir.model.gaussian_diffusion.Diffusion
+    params:
+      linear_start: 0.00085
+      linear_end: 0.0120
+      timesteps: 1000
+      zero_snr: False
+      parameterization: eps
+
+dataset:
+  train:
+    target: diffbir.dataset.codeformer.CodeformerDataset
+    params:
+      # training file list path
+      file_list: ./dataset/FFHQ/image_paths_caption.txt
+      file_backend_cfg:
+        target: diffbir.dataset.file_backend.HardDiskBackend
+      out_size: 512
+      crop_type: center
+      blur_kernel_size: 41
+      kernel_list: ['iso', 'aniso']
+      kernel_prob: [0.5, 0.5]
+      blur_sigma: [0.1, 12]
+      downsample_range: [1, 12]
+      noise_range: [0, 15]
+      jpeg_range: [30, 100]
+
+batch_transform:
+  target: diffbir.dataset.batch_transform.IdentityBatchTransform
+
+reward:
+  dwt_loss_weight: 0.01
+  dwt_loss_step: [0,1]
+  image_reward_loss_weight: 0.005
+  image_reward_loss_step: [0,1]
+  timestep_sample: [0, 49]
+  lpips_weight: 0.01
+  update_freq: 10
+  use_ad: True
+
+
+
+train:
+  # pretrained sd v2.0 path
+  sd_path: ./weights/v2-1_512-ema-pruned.ckpt
+  facereward_path: ./weights/model_weight_0.8722.pth
+  # experiment directory path
+  exp_dir: ./experiments_diffbir
+  # stage 1 swinir path.
+  swinir_path: ./weights/face_swinir_v1.ckpt
+  controlnet_path: ./weights/v1_face.pth
+  learning_rate: 5e-5
+
+  batch_size: 1
+  num_workers: 0
+  train_steps: 3500
+  log_every: 50
+  ckpt_every: 500
+  resume: ~
+  noise_aug_timestep: 0
+  log_record: wandb
+
+
