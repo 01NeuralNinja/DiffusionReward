@@ -6,7 +6,7 @@
 
 ## 📖 Overview
 
-This project introduces the DiffusionReward method, which enhances blind face restoration through reward feedback learning. Using DiffBIR+ReFL as an example, we provide complete validation and training code, along with anonymous pre-trained weight files.
+This project introduces the DiffusionReward method, which enhances blind face restoration through reward feedback learning. Using DiffBIR+ReFL as an example, we provide complete validation and training code. **We have created anonymous accounts to share all necessary training and validation files, including pre-trained weight files, ensuring reproducible research while maintaining anonymity during the review process.**
 
 ## 🚀 Quick Start
 
@@ -32,11 +32,10 @@ This project introduces the DiffusionReward method, which enhances blind face re
 ### Model Weights Download
 
 **Download Pre-trained Weights**
+- **Anonymous Account Access**: We have created dedicated anonymous accounts to provide all necessary files for reproducible research
 - Download DiffusionReward weight files: [Google Drive Link](https://drive.google.com/drive/folders/1d0ASMR6aH3rtYx9Quyh_eqMbwLKIfgLP?usp=sharing)
 - Place the downloaded weight files in the `./weights` directory
-- Weight files include:
-  - Face Reward Model weights
-  - DiffBIR+ReFL weights
+
 
 **Note**: Please modify the weight paths in the configuration files according to your actual file locations.
 
@@ -75,7 +74,7 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
 
 1. **FFHQ Dataset Preparation**
    - First download the FFHQ dataset: [FFHQ Dataset](https://github.com/NVlabs/ffhq-dataset)
-   - Download our prepared text description files: [Text Description Files](https://drive.google.com/file/d/1rqdeWr_BB50Q-4_1H6AfR8WEf9G31M7_/view?usp=sharing)
+   - **Anonymous Account Provided**: Download our prepared text description files: [Text Description Files](https://drive.google.com/file/d/1rqdeWr_BB50Q-4_1H6AfR8WEf9G31M7_/view?usp=sharing)
    - Extract the text description files to the FFHQ image folder
    - Download the [images_path_list.txt](https://drive.google.com/drive/folders/1d0ASMR6aH3rtYx9Quyh_eqMbwLKIfgLP?usp=sharing) file, which contains relative path information for images
 
@@ -91,6 +90,10 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
        │   └── 69999.txt
        └── image_path_list.txt
    ```
+3. **Model Weights Download**
+
+In accordance with the requirements of the verification phase, place all weights in the .weights folder.
+
 
 ### Start Training
 
@@ -99,7 +102,7 @@ Use the following command to start training:
 ```bash
 accelerate launch train.py --config configs/train/train_diffbir_refl.yaml
 ```
-
+**Note**: Please modify the weight paths in the `.yaml` file according to your actual file locations.
 
 ## 🤝 Contributing
 

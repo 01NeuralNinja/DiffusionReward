@@ -129,7 +129,7 @@ reward:
 train:
   # pretrained sd v2.0 path
   sd_path: ./weights/v2-1_512-ema-pruned.ckpt
-  facereward_path: ./weights/model_weight_0.8722.pth
+  facereward_path: ./weights/FaceRewardModel.pth
   # experiment directory path
   exp_dir: ./experiments_diffbir
   # stage 1 swinir path.

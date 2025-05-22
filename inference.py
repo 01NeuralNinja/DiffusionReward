@@ -75,7 +75,7 @@ def parse_args() -> Namespace:
         "--version",
         type=str,
         default="v2.1",
-        choices=["v1", "v2", "v2.1", "custom", "v1_reward"],
+        choices=["v1", "v2", "v2.1", "custom", "v1_refl"],
         help="DiffBIR model version.",
     )
     parser.add_argument(
