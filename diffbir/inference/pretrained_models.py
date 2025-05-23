@@ -1,4 +1,10 @@
 """
+The weighted link here is from the public repository of Lin et al.
+
+DiffBIR: Towards Blind Image Restoration with Generative Diffusion Prior
+
+Thank you!
+
 All models used in inference:
 - DiffBIR-v1
   All tasks share the same pre-trained stable diffusion v2.1 (sd_v2.1).

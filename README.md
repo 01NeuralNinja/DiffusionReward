@@ -92,7 +92,7 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
    ```
 3. **Model Weights Download**
 
-In accordance with the requirements of the verification phase, place all weights in the .weights folder.
+In accordance with the requirements of the validation phase, place all weights in the .weights folder.
 
 
 ### Start Training
@@ -103,6 +103,9 @@ Use the following command to start training:
 accelerate launch train.py --config configs/train/train_diffbir_refl.yaml
 ```
 **Note**: Please modify the weight paths in the `.yaml` file according to your actual file locations.
+
+## 🙏 Acknowledgments
+This work is built upon the excellent foundation provided by the [DiffBIR](https://github.com/XPixelGroup/DiffBIR) repository. We sincerely thank the authors for their outstanding contribution to the field of blind image restoration.
 
 ## 🤝 Contributing
 
