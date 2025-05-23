@@ -16,18 +16,6 @@ from hpsv2.src.open_clip import create_model_and_transforms, get_tokenizer
 
 
 def setup_reward_model(cfg, weight_dtype, accelerator):
-    """
-    设置并配置reward model，包括模型创建、权重加载和参数设置
-
-    Args:
-        cfg: 配置对象
-        weight_dtype: 权重数据类型
-        accelerator: Accelerator对象
-
-    Returns:
-        tuple: (reward_model, tokenizer, normalize)
-    """
-    # 创建reward model
     model_name = "ViT-H-14"
     reward_model, preprocess_train, preprocess_val = create_model_and_transforms(
         model_name,
@@ -49,17 +37,17 @@ def setup_reward_model(cfg, weight_dtype, accelerator):
         with_region_predictor=False
     )
 
-    # 获取tokenizer
+
     tokenizer = get_tokenizer(model_name)
 
-    # 加载预训练权重
+
     checkpoint_path = cfg.train.facereward_path
     checkpoint = torch.load(checkpoint_path, map_location="cpu")
     print('reward_load----------------')
     print(reward_model.load_state_dict(checkpoint['state_dict'], strict=True))
     reward_model = reward_model.to(accelerator.device)
 
-    # 配置模型参数
+
     reward_model.set_grad_checkpointing(True)
     reward_model.train()
     reward_model.lock_image_tower(
@@ -69,7 +57,7 @@ def setup_reward_model(cfg, weight_dtype, accelerator):
         unlocked_layers=11,
         freeze_layer_norm=False)
 
-    # 设置图像归一化
+
     normalize = torchvision.transforms.Normalize(
         mean=[0.48145466, 0.4578275, 0.40821073],
         std=[0.26862954, 0.26130258, 0.27577711]
@@ -77,7 +65,7 @@ def setup_reward_model(cfg, weight_dtype, accelerator):
     target_size = 224
 
     return reward_model, tokenizer, normalize, target_size
-# 添加对抗训练的损失函数
+
 def hps_loss_ru(text_logits, labels):
     device = text_logits.device
     text_0_logits, text_1_logits = text_logits.chunk(2, dim=-1)
