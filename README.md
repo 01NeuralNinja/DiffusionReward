@@ -76,7 +76,7 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
    - First download the FFHQ dataset: [FFHQ Dataset](https://github.com/NVlabs/ffhq-dataset)
    - **Anonymous Account Provided**: Download our prepared text description files: [Text Description Files](https://drive.google.com/file/d/1rqdeWr_BB50Q-4_1H6AfR8WEf9G31M7_/view?usp=sharing)
    - Extract the text description files to the FFHQ image folder
-   - Download the [images_path_list.txt](https://drive.google.com/drive/folders/1d0ASMR6aH3rtYx9Quyh_eqMbwLKIfgLP?usp=sharing) file, which contains relative path information for images
+   - Download the [images_paths.txt](https://drive.google.com/file/d/1lip4_0VdIH9L1cZoHw6IJ3_WrDeAFv3k/view?usp=sharing) file, which contains relative path information for images
 
 2. **Dataset File Structure**
    ```
@@ -88,7 +88,7 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
        │   ├── ...
        │   ├── 69999.png
        │   └── 69999.txt
-       └── image_path_list.txt
+       └── image_paths.txt
    ```
 3. **Model Weights Download**
 
