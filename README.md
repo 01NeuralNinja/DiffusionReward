@@ -16,18 +16,18 @@ This project introduces the DiffusionReward method, which enhances blind face re
 ### Model Architecture
 Face Reward Model
 <p align="center">
-    <img src="others/frm.pdf" width="600" alt="DiffusionReward Architecture">
+    <img src="others/frm.jpg" width="600" alt="DiffusionReward Architecture">
 </p>
 
 DiffusionReward
 <p align="center">
-    <img src="others/new_frame.pdf" width="600" alt="DiffusionReward Architecture">
+    <img src="others/new_frame.jpg" width="600" alt="DiffusionReward Architecture">
 </p>
 
 ### Visual Results
 Before and after comparison
 <p align="center">
-    <img src="others/guidence_show_compressed.pdf" width="600" alt="DiffusionReward Results Comparison">
+    <img src="others/guidence_show_compressed.jpg" width="600" alt="DiffusionReward Results Comparison">
 </p>
 
 ## 🚀 Quick Start
