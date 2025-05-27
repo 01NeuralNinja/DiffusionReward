@@ -7,6 +7,7 @@
 <p align="center">
     <a href="https://arxiv.org/abs/2505.17910">📄 Read our paper on arXiv</a>
 </p>
+
 ## 📖 Overview
 
 This project introduces the DiffusionReward method, which enhances blind face restoration through reward feedback learning. Using DiffBIR+ReFL as an example, we provide inference and training code.
@@ -16,18 +17,18 @@ This project introduces the DiffusionReward method, which enhances blind face re
 ### Model Architecture
 Face Reward Model
 <p align="center">
-    <img src="others/frm.jpg" width="600" alt="DiffusionReward Architecture">
+    <img src="others/frm.jpg" width="500" alt="DiffusionReward Architecture">
 </p>
 
 DiffusionReward
 <p align="center">
-    <img src="others/new_frame.jpg" width="600" alt="DiffusionReward Architecture">
+    <img src="others/new_frame.jpg" width="500" alt="DiffusionReward Architecture">
 </p>
 
 ### Visual Results
 Before and after comparison
 <p align="center">
-    <img src="others/guidence_show_compressed.jpg" width="600" alt="DiffusionReward Results Comparison">
+    <img src="others/guidence_show_compressed.jpg" width="800" alt="DiffusionReward Results Comparison">
 </p>
 
 ## 🚀 Quick Start
