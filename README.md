@@ -4,9 +4,31 @@
     <img src="others/logo.png" width="400">
 </p>
 
+<p align="center">
+    <a href="https://arxiv.org/abs/2505.17910">📄 Read our paper on arXiv</a>
+</p>
 ## 📖 Overview
 
-This project introduces the DiffusionReward method, which enhances blind face restoration through reward feedback learning. Using DiffBIR+ReFL as an example, we provide complete validation and training code. **We have created anonymous accounts to share all necessary training and validation files, including pre-trained weight files, ensuring reproducible research while maintaining anonymity during the review process.**
+This project introduces the DiffusionReward method, which enhances blind face restoration through reward feedback learning. Using DiffBIR+ReFL as an example, we provide inference and training code.
+
+## 🖼️ Model Architecture and Results
+
+### Model Architecture
+Face Reward Model
+<p align="center">
+    <img src="others/frm.pdf" width="600" alt="DiffusionReward Architecture">
+</p>
+
+DiffusionReward
+<p align="center">
+    <img src="others/new_frame.pdf" width="600" alt="DiffusionReward Architecture">
+</p>
+
+### Visual Results
+Before and after comparison
+<p align="center">
+    <img src="others/guidence_show_compressed.pdf" width="600" alt="DiffusionReward Results Comparison">
+</p>
 
 ## 🚀 Quick Start
 
@@ -23,6 +45,8 @@ This project introduces the DiffusionReward method, which enhances blind face re
    pip install -r requirements.txt
    ```
 
+## 🔍 Model Validation
+
 ### Dataset Preparation
 
 **Test Dataset Download**
@@ -30,19 +54,13 @@ This project introduces the DiffusionReward method, which enhances blind face re
 - Download link: [VQFR Repository](https://github.com/TencentARC/VQFR)
 
 ### Model Weights Download
+Download the ControlNet weights for Diffbir+ReFL [here](https://drive.google.com/file/d/1jLZP_NGxKcfhjN8rJXcbtBGXTin4vo3x/view?usp=sharing).  
+Place the weight file in the `./weights` folder.
 
-**Download Pre-trained Weights**
-- **Anonymous Account Access**: We have created dedicated anonymous accounts to provide all necessary files for reproducible research
-- Download DiffusionReward weight files: [Google Drive Link](https://drive.google.com/drive/folders/1d0ASMR6aH3rtYx9Quyh_eqMbwLKIfgLP?usp=sharing)
-- Place the downloaded weight files in the `./weights` directory
-
-
-**Note**: Please modify the weight paths in the configuration files according to your actual file locations.
-
-## 🔍 Model Validation
 
 Run the following command to perform model validation:
 
+### 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python inference.py \
     --task face \
@@ -90,9 +108,17 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
        │   └── 69999.txt
        └── image_paths.txt
    ```
-3. **Model Weights Download**
+### Model Weights Download
 
-In accordance with the requirements of the validation phase, place all weights in the .weights folder.
+To run the training phase, download the following pre-trained model weights and place them in the `./weights` folder:
+
+- **Stable Diffusion**: Download the pre-trained weights for the SD-2.1 model [here](https://drive.google.com/file/d/1FFLDPLiHcKA4AQjW6AuVz8RUkkUcLmXs/view?usp=drive_link).  
+
+- **DiffBIR**: Download the pre-trained weights for the DiffBIR-v1 face model [here](https://drive.google.com/file/d/1-8esNaZIVyzM4ttpJg795E4ucpRrvEaC/view?usp=drive_link).  
+
+- **SwinIR**: Download the pre-trained weights for the SwinIR model [here](https://drive.google.com/file/d/11T6OsjATJ5gEbkBGOQHRVR38ltTtm8kb/view?usp=drive_link).  
+
+- **FaceReward**: Download the pre-trained weights for the FaceReward model [here](https://drive.google.com/file/d/1ugATjemF-70b4N1dQrQJ8J1cdmiVeqOR/view?usp=drive_link).  
 
 
 ### Start Training
@@ -107,7 +133,16 @@ accelerate launch train.py --config configs/train/train_diffbir_refl.yaml
 ## 🙏 Acknowledgments
 This work is built upon the excellent foundation provided by the [DiffBIR](https://github.com/XPixelGroup/DiffBIR) repository. We sincerely thank the authors for their outstanding contribution to the field of blind image restoration.
 
-## 🤝 Contributing
-
-We welcome Issues and Pull Requests to improve this project.
-
+## 🤝 Citation
+If you take use of our code or feel our paper is useful for you, please cite our papers:
+```bash
+@misc{wu2025diffusionrewardenhancingblindface,
+      title={DiffusionReward: Enhancing Blind Face Restoration through Reward Feedback Learning}, 
+      author={Bin Wu and Wei Wang and Yahui Liu and Zixiang Li and Yao Zhao},
+      year={2025},
+      eprint={2505.17910},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2505.17910}, 
+}
+```

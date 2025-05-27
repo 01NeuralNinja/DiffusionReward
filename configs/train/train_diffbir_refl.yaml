@@ -127,7 +127,7 @@ reward:
 
 
 train:
-  # pretrained sd v2.0 path
+  # pretrained sd v2.1 path
   sd_path: ./weights/v2-1_512-ema-pruned.ckpt
   facereward_path: ./weights/FaceRewardModel.pth
   # experiment directory path

@@ -128,7 +128,7 @@ def main(args) -> None:
     # Setup Face Reward Model (FRM)
     reward_model, tokenizer, normalize, target_size = setup_reward_model(cfg, weight_dtype, accelerator)
 
-    # Adversarial training configuration
+    # FRM update training configuration
     update_freq = getattr(cfg.reward, "update_freq", 10)
     reward_learning_rate = getattr(cfg.reward, "learning_rate_reward", 2e-6)
 
