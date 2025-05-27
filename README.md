@@ -17,12 +17,12 @@ This project introduces the DiffusionReward method, which enhances blind face re
 ### Model Architecture
 Face Reward Model
 <p align="center">
-    <img src="others/frm.jpg" width="500" alt="DiffusionReward Architecture">
+    <img src="others/frm.jpg" width="600" alt="DiffusionReward Architecture">
 </p>
 
 DiffusionReward
 <p align="center">
-    <img src="others/new_frame.jpg" width="500" alt="DiffusionReward Architecture">
+    <img src="others/new_frame.jpg" width="600" alt="DiffusionReward Architecture">
 </p>
 
 ### Visual Results
@@ -46,7 +46,7 @@ Before and after comparison
    pip install -r requirements.txt
    ```
 
-## 🔍 Model Validation
+## 🔍 Model Inference
 
 ### Dataset Preparation
 
@@ -93,7 +93,7 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
 
 1. **FFHQ Dataset Preparation**
    - First download the FFHQ dataset: [FFHQ Dataset](https://github.com/NVlabs/ffhq-dataset)
-   - **Anonymous Account Provided**: Download our prepared text description files: [Text Description Files](https://drive.google.com/file/d/1rqdeWr_BB50Q-4_1H6AfR8WEf9G31M7_/view?usp=sharing)
+   - Download our prepared text description files: [Text Description Files](https://drive.google.com/file/d/1rqdeWr_BB50Q-4_1H6AfR8WEf9G31M7_/view?usp=sharing)
    - Extract the text description files to the FFHQ image folder
    - Download the [images_paths.txt](https://drive.google.com/file/d/1lip4_0VdIH9L1cZoHw6IJ3_WrDeAFv3k/view?usp=sharing) file, which contains relative path information for images
 
